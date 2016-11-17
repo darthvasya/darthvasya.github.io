@@ -1,224 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myApp">
   <head>
+    <title>Angular Material</title>
+
     <meta charset="utf-8">
-    <title>Main page of sos button</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.min.css" media="screen" title="no title" charset="utf-8">
 
-    <link rel="stylesheet/less" type="text/css" href="css/master.less">
-
-    <script src="js/less.min.js" charset="utf-8"></script>
-
-
-
+    <link rel="stylesheet" href="images/css/styles.css" media="screen" title="no title" charset="utf-8">
+    <link rel="stylesheet" href="css/master.css" media="screen" title="no title" charset="utf-8">
   </head>
-  <body>
-
-    <header>
-        <div class="col-md-2 sos-text">
-          <h1><a href="index.html">SOS BUTTON</a></h1>
-        </div>
-        <div class="col-md-8 center-block">
-          <ul>
-            <li>Что это такое</li>
-            <li>Особенности</li>
-            <li>Блог</li>
-            <li>Контакты</li>
-          </ul>
-        </div>
-        <div class="col-md-2 right-block">
-          <!-- icons -->
-          <div class="lang">
-            <span><a href="#"><img src="images/twiter.png" alt="" width="25" height="25" /></a></span>
-            <span><a href="#"><img src="images/facebook.png" alt="" width="25" height="25" /></a></span>
-            <span><a href="#"><img src="images/vk.png" alt="" width="25" height="25" /></a></span>
-            <span class="ru">RU</span>
-            <span class="eng active">ENG</span>
-          </span>
-        </div>
-    </header>
+  <body ng-cloak layout="column" ng-controller="appController" >
 
 
-    <section class="main">
-      <div class="col-md-2">
+    <div layout="row" layout-xs="row">
+
+      <div class="left" id="left">
+        <ng-include src="'templates/left-bar.html'"></ng-include>
+      </div>
+
+      <div class="offset-block">
+
+      </div>
+      <div flex="auto" class="center" ng-controller="appController">
+          <md-toolbar class="md-hue-2" ng-controller="searchController">
+            <div class="md-toolbar-tools">
+              <md-button class="md-icon-button" aria-label="Settings">
+                <span class="icons8-search"></span>
+              </md-button>
+              <md-autocomplete
+                  ng-disabled="isDisabled"
+                  md-no-cache="noCache"
+                  md-selected-item="selectedItem"
+                  md-search-text-change="searchTextChange(searchText)"
+                  md-search-text="searchText"
+                  md-selected-item-change="selectedItemChange(item)"
+                  md-items="item in querySearch(searchText)"
+                  md-item-text="item.display"
+                  md-min-length="0"
+                  placeholder="">
+                <md-item-template>
+                  <span md-highlight-text="searchText" md-highlight-flags="^i">{{item.display}}</span>
+                </md-item-template>
+                <md-not-found>
+                  No states matching "{{searchText}}" were found.
+                  <a ng-click="ctrl.newState(searchText)">Create a new one!</a>
+                </md-not-found>
+              </md-autocomplete>
+              <h2>
+                <span></span>
+              </h2>
+              <span flex></span>
+
+              <div layout="column" flex="33" flex-sm="100" flex-xs="100" layout-align="center center">
+                <md-menu md-offset="0 -7">
+                  <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                    <span class="icons8-more"></span>
+                  </md-button>
+                  <md-menu-content width="2">
+                    <md-menu-item ng-repeat="item in [1, 2, 3]">
+                      <md-button ng-click="ctrl.announceClick($index)"> <span md-menu-align-target>Option</span> {{item}} </md-button>
+                    </md-menu-item>
+                  </md-menu-content>
+                </md-menu>
+              </div>
+            </div>
+          </md-toolbar>
+
+          <ng-include src="'templates/task-list.html'"></ng-include>
+
+
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+          <ng-view></ng-view>
+        </md-sidenav>
+
+
 
       </div>
 
-      <div class="col-md-8">
-        <h1>Чувствуете ли Вы себя <br/>безопасно?</h1>
-        <p class="intro">
-          SosButton - это кнопка на вашем телефоне, которая, в нужный момент, может спасти жизнь Вам и Вашим близким
-        </p>
-        <div class="iphone">
-          <img src="images/iphone.png" alt="" width="80%" height="80%"/>
-        </div>
-        <div class="apps">
-          <a href="#" class="apple"><img src="images/appstore.png" alt=""/></a>
-          <a href="#" class="android"><img src="images/google.png" alt="" /></a>
-        </div>
-      </div>
-
-      <div class="col-md-2">
-
-      </div>
-    </section>
-
-    <section class="scope">
-      <div class="col-md-2">
-
-      </div>
-
-      <div class="col-md-8">
-        <h1>Возможности приложения</h1>
-        <div class="jumbs">
-          <div class="col-md-4 jumb">
-            <div class="rect" style="background-image: url('images/people.png');">
-            </div>
-            <div class="txt">
-              <p class="head-txt">Вы всегда на связи с друзьями и комьюнити</p>
-              <p class="cont-txt">Сигнал тревоги получат не только ваши друзья, но и сообщество в радиусе километра </p>
-            </div>
-          </div>
-          <div class="col-md-4 jumb">
-            <div class="rect" style="background-image: url('images/gps.png');">
-            </div>
-            <div class="txt">
-              <p class="head-txt">Вы всегда на связи с друзьями и комьюнити</p>
-              <p class="cont-txt">Сигнал тревоги получат не только ваши друзья, но и сообщество в радиусе километра </p>
-            </div>
-          </div>
-          <div class="col-md-4 jumb">
-            <div class="rect" style="background-image: url('images/mic.png');">
-            </div>
-            <div class="txt">
-              <p class="head-txt">Вы всегда на связи с друзьями и комьюнити</p>
-              <p class="cont-txt">Сигнал тревоги получат не только ваши друзья, но и сообщество в радиусе километра </p>
-            </div>
-          </div>
-        </div>
-        <div class="jumbs jumbs-2">
-          <div class="col-md-4 jumb">
-            <div class="rect" style="background-image: url('images/disabled.png');">
-            </div>
-            <div class="txt">
-              <p class="head-txt">Вы всегда на связи с друзьями и комьюнити</p>
-              <p class="cont-txt">Сигнал тревоги получат не только ваши друзья, но и сообщество в радиусе километра </p>
-            </div>
-          </div>
-          <div class="col-md-4 jumb">
-            <div class="rect" style="background-image: url('images/message.png');">
-            </div>
-            <div class="txt">
-              <p class="head-txt">Вы всегда на связи с друзьями и комьюнити</p>
-              <p class="cont-txt">Сигнал тревоги получат не только ваши друзья, но и сообщество в радиусе километра </p>
-            </div>
-          </div>
-          <div class="col-md-4 jumb">
-            <div class="rect" style="background-image: url('images/phone.png');">
-            </div>
-            <div class="txt">
-              <p class="head-txt">Вы всегда на связи с друзьями и комьюнити</p>
-              <p class="cont-txt">Сигнал тревоги получат не только ваши друзья, но и сообщество в радиусе километра </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-2">
-
-      </div>
-    </section>
-
-    <section class="subscribe">
-      <h2>Подпишись на нашу рассылку</h2>
-      <h3>Узнавайте первыми о наших обнавлениях</h3>
-      <form class="" action="index.htm" method="post">
-        <div class="input-group email-inp">
-          <input class="form-control" type="email" name="email" value="" placeholder="Введите Ваш e-mail" required>
-        </div>
-        <div class="input-group btn-inp">
-          <input class="form-control btn btn-default" type="submit" name="btn" value="Отправить">
-        </div>
-      </form>
-    </section>
-
-    <!-- <section class="news">
-      <h1>Статьи</h1>
-      <div class="col-md-2">
-
-      </div>
-      <div class="col-md-8">
-        <div class="col-md-4 new">
-          <p class="date">12/02/16</p>
-          <div class="social-inf">
-            <span><span><img src="" alt="" /></span>15</span>
-            <span><span><img src="" alt="" /></span>28</span>
-          </div>
-          <h4>Как выбрать трекер</h4>
-          <span class="tags">#TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG </span>
-          <p class="pre-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. dafsds sdfa df asdf sdf asdf asdf asdf a/..</p>
-        </div>
-        <div class="col-md-4 new">
-          <p class="date">12/02/16</p>
-          <div class="social-inf">
-            <span><span><img src="" alt="" /></span>15</span>
-            <span><span><img src="" alt="" /></span>28</span>
-          </div>
-          <h4>Как выбрать трекер</h4>
-          <span class="tags">#TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG </span>
-          <p class="pre-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. dafsds sdfa df asdf sdf asdf asdf asdf a/..</p>
-        </div>
-        <div class="col-md-4 new">
-          <p class="date">12/02/16</p>
-          <div class="social-inf">
-            <span><span><img src="" alt="" /></span>15</span>
-            <span><span><img src="" alt="" /></span>28</span>
-          </div>
-          <h4>Как выбрать трекер</h4>
-          <span class="tags">#TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG #TAG </span>
-          <p class="pre-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam. dafsds sdfa df asdf sdf asdf asdf asdf a/..</p>
-        </div>
-      </div>
-      <div class="col-md-2">
-
-      </div>
-    </section> -->
-
-    <footer>
-      <div class="col-md-offset-2">
-        <h1 style="margin-left: 12px;">Контакты</h1>
-      </div>
-
-      <div class="col-md-8 col-md-offset-2 conte" style="padding: 0px;">
-        <div class="col-md-3">
-          <span class="typ">служба поддержки</span>
-          <span>support@sosbutton.me</span>
-        </div>
-        <div class="col-md-3">
-          <span class="typ">другие вопросы</span>
-          <span>adminbutton@sosbutton.me</span>
-        </div>
-        <div class="col-md-2 soc">
-          <span><a href="#"><img src="images/twiter.png" alt="" width="25" height="25" /></a></span>
-          <span><a href="#"><img src="images/facebook.png" alt="" width="25" height="25" /></a></span>
-          <span><a href="#"><img src="images/vk.png" alt="" width="25" height="25" /></a></span>
-        </div>
-        <div class="col-md-4">
-          <div class="apps">
-            <a href="#" class="apple"><img src="images/appstore.png" alt=""/></a>
-            <a href="#" class="android"><img src="images/google.png" alt="" /></a>
-          </div>
-        </div>
-      </div>
-
-    </footer>
-
-    <div class="legal">
-      Copyright (c) 2016 Copyright Holder All Rights Reserved.
     </div>
+
+    <!-- help scrpts  -->
+    <script type="text/javascript">
+      window.onload = function () {
+        var windowHeight = window.innerHeight;
+        document.getElementById('left').style.minHeight = windowHeight + 'px';
+      }
+    </script>
+    <!--  -->
+
+    <!--  -->
+    <script src="node_modules/angular/angular.js" charset="utf-8"></script>
+    <script src="node_modules/angular-animate/angular-animate.js" charset="utf-8"></script>
+    <script src="node_modules/angular-aria/angular-aria.js" charset="utf-8"></script>
+    <script src="node_modules/angular-material/angular-material.js" charset="utf-8"></script>
+    <script src="node_modules/angular-route/angular-route.js" charset="utf-8"></script>
+
+    <script src="app.js" charset="utf-8"></script>
+    <script src="Controllers/appController.js" charset="utf-8"></script>
+    <script src="Controllers/searchController.js" charset="utf-8"></script>
 
   </body>
 </html>
