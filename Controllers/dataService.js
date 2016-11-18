@@ -7,7 +7,7 @@ app.factory('dataService', function () {
         taskCount: 3,
         days:
         [{
-          date: "Today",
+          date: "18.11.2016",
           tasks:
           [{
               id_task: 1,
@@ -21,7 +21,7 @@ app.factory('dataService', function () {
             }]
         },
         {
-          date: "18.11.2016",
+          date: "21.11.2016",
           tasks:
           [{
             id_task: 3,
