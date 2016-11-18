@@ -5,10 +5,11 @@ app.controller('appController', function($scope, $timeout, $mdDialog, $mdSidenav
   $scope.projects = dataService.projects;
   $scope.selected = 0;
   $scope.currentProjectId = 0;
-  $scope.currentProjectObject = {};
+  $scope.currentProjectObject = $scope.projects[0];
   $scope.selectedTaskObject = {};
   $scope.selectedTask = 0;
   $scope.haveTasks = true;
+
 
   $scope.select= function(index, id) {
       $location.path("projects/" + id);
