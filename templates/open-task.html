@@ -1,0 +1,22 @@
+<md-toolbar class="sidenav-toolbar">
+  <md-button class="md-icon-button">
+    <span ng-click="close()" class="icons8-delete-2"></span>
+  </md-button>
+  <span class="head-text md-subhead">
+    <span ng-bind="selectedTaskObject.task_name"></span>
+    <md-button class="md-icon-button edit-btn-task" aria-label="Settings">
+      <span class="icons8-edit"></span>
+    </md-button>
+    <md-button class="md-icon-button del-btn-task" aria-label="Settings" ng-click="deleteTask(selectedTaskObject.id_task)">
+      <span class="icons8-delete" ></span>
+    </md-button>
+
+  </span>
+
+
+
+</md-toolbar>
+<md-content layout-padding class="sidenav-body" >
+  <p class="task-text md-body-2" ng-bind="selectedTaskObject.description">
+  </p>
+</md-content>

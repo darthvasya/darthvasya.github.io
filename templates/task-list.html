@@ -1,0 +1,38 @@
+
+
+<div class="">
+  <md-content class="task-list-body" id="taskbody">
+
+    <!-- One day -->
+    <div layout="row" layout-align="center" ng-repeat="day in currentProjectObject.days">
+        <h6 class="day md-subhead" ng-bind="day.date"></h6>
+        <div class="padded" md-whiteframe="3" flex="100" flex-gt-sm="60" layout="column" layout-align="center center">
+          <div class="one-task" layout="row" layout-align="center center" ng-repeat="task in day.tasks">
+            <div flex="20">
+              <md-radio-group ng-model="data.group1">
+                <md-radio-button value="1" class="md-primary" ng-click="deleteTask(task.id_task)"></md-radio-button>
+              </md-radio-group>
+            </div>
+            <div class="task-body" flex="80" ng-click="toggleSidenav('open-task', day.date, task.id_task)" style="animation: none; transition: none;">
+              <p class="md-title" ng-bind="task.task_name"> </p>
+            </div>
+          </div>
+
+        </div>
+    </div>
+    <!-- End one day -->
+
+
+
+    <!--  -->
+    <br>
+    <br>
+
+    <md-button class="md-fab add-task-btn"  ng-click="toggleSidenav('add-task')" class="md-accent">
+      <span class="icons8-plus"></span>
+    </md-button>
+
+
+  </md-content>
+
+</div>

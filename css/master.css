@@ -1,0 +1,413 @@
+body {
+  background-color: #F7F7F7;
+}
+
+/*LEFT BAR*/
+.left {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+
+  width: 325px;
+
+  background-color: #292c33;
+}
+
+.offset-block {
+  width: 325px;
+}
+
+.person {
+  position: absolute;
+  top: 20px;
+  left: 40px;
+
+  color: white;
+}
+
+.person img {
+  padding: 5px;
+
+  border: 1px solid white;
+  border-radius: 50% 50%;
+}
+
+.person .name {
+  position: absolute;
+  top: 20px;
+  left: 75px;
+
+  width: 150px;
+
+  font-size: 14px;
+  font-weight: bolder;
+}
+
+.projects {
+  margin-top: 96px;
+}
+
+.projects-header {
+  margin-left: 27px;
+
+  color: white;
+  background-color: #292c33;
+
+  font-size: 12px;
+}
+
+.addproj {
+  position: absolute;
+  top: -12px;
+  right: 10px;
+
+  cursor: pointer;
+
+  color: white;
+  outline: none;
+
+  font-size: 18px;
+  font-weight: bolder;
+}
+
+.projects md-content {
+  height: 500px;
+
+  background-color: #292c33;
+}
+
+.projects .list-element {
+  width: 259px;
+  height: 37px;
+  min-height: 27px;
+  margin-bottom: 1px;
+  margin-left: 28px;
+  padding-left: 10px;
+
+  cursor: pointer;
+
+  color: white;
+  border-radius: 5px;
+  outline: none;
+
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.projects .list-element h3 {
+  position: absolute;
+
+  width: 73%;
+  margin-top: 10px;
+
+  white-space: normal;
+}
+
+.projects .list-element:hover {
+  background-color: rgba(227, 227, 277, 0.5);
+}
+
+.projects .active {
+    background-color: #6B6B99;
+}
+
+.projects  .count {
+  position: absolute;
+  right:  0px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 0px;
+  left: 30px;
+
+  cursor: pointer;
+
+  color: white;
+  outline: none;
+
+  font-size: 14px;
+}
+
+/*END LEFT BAR*/
+
+/* CENTER*/
+.center md-toolbar {
+  position: fixed;
+  height: 50px;  min-height: 50px;
+
+}
+
+.dots {
+  position: fixed;
+  top: 5px;
+  right: 10px;
+}
+
+.md-toolbar-tools {
+  color: #B1B1C8;
+  border-bottom: 1px solid #BDBDBD;
+  background-color: #F7F7F7;
+}
+
+.center md-toolbar .icons8-search,  .center md-toolbar .icons8-more {
+  font-size: 25px;
+}
+
+md-autocomplete {
+  width: 100%;
+
+  border: none;
+  background-color: #F7F7F7;
+  box-shadow: none !important;
+}
+
+.center md-autocomplete{
+  width: 60%;
+}
+
+.center .empty-content .icons8-todo-list{
+  color: #B1B1C8;
+
+  font-size: 200px;
+}
+.center md-content .empty-content {
+  height: 613px;
+  min-height: 613px;
+
+  background-color: #F7F7F7;
+}
+
+.center md-content .empty-content p {
+  position: absolute;
+  top: 66%;
+
+  text-align: center;
+
+  color: #B1B1C8;
+
+  font-size: 24px;
+}
+
+.center md-content .empty-content i {
+  position: absolute;
+  top: 34%;
+}
+
+.center md-content .add-task-btn {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+
+  background-color: #6B6B99;
+
+  font-size: 25px;
+}
+
+.add-task-btn:not([disabled]):hover {
+  color: white;
+  background-color: #6B6B99 !important;
+}
+
+.add-task-btn:not([disabled]) {
+  color: white;
+  background-color: #6B6B99 !important;
+}
+
+md-radio-button {
+  outline: none;
+}
+/*END CENTER*/
+
+
+/*RIGHT SIDENAV COMMON*/
+md-sidenav {
+  width: 100%;
+
+  background-color: #292C33;
+}
+
+.sidenav-toolbar, .sidenav-body {
+  background-color: #292C33 !important;
+}
+
+.sidenav-body  {
+  margin-top: 50px;
+}
+
+.icons8-delete-2 {
+    font-size: 21px;
+}
+
+.icons8-delete-2::after {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+
+  content: "ESC";
+
+  font-size: 10px;
+}
+
+.head-text {
+  margin-top: -24px;
+
+  text-align: center;
+
+  font-size: 14px;
+}
+
+.sidenav-body label, .sidenav-body input, .sidenav-body md-button{
+  color: white !important;
+}
+
+.sidenav-body input {
+  border-color: white;
+}
+
+.sidenav-body input:focus {
+  border-color: white !important;
+}
+
+.sidenav-body  md-input-container {
+  width: 80%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 10%;
+}
+
+.add-task-btn-ok .icons8-checkmark{
+  position: absolute;
+  top: 0px;
+  left: 15px;
+}
+/*END RIGHT SIDENAW COMMON*/
+
+
+/*TASKS*/
+.padded{
+  margin-top: 35px;
+
+  border-radius: 10px;
+  background-color: white;
+}
+
+.padded md-radio-button {
+  width: 20px;
+  margin-top: 20px;
+  margin-left: 30px;
+
+  color: #EAEAEA;
+  border-color: #EAEAEA;
+}
+
+.padded md-radio-button::after {
+  position: absolute;
+  top: -9px;
+  left: 50px;
+
+  width: 1px;
+  height: 35px;
+
+  content: '';
+
+  background-color: #EAEAEA;
+}
+
+.one-task {
+  width: 100%;
+  height: 60px;
+}
+
+.one-task::after {
+  position: absolute;
+
+  width: 50%;
+  height: 1px;
+  margin-top: 30px;
+
+  content: '';
+
+  background-color: #EAEAEA;
+}
+.one-task:last-child::after {
+  width: 0px;
+
+  content: '';
+}
+
+.one-task:last-child {
+  border-bottom: none;
+}
+
+.task-body p{
+  font-size: 14px !important;
+  font-weight: bold;
+}
+
+.day {
+  position: absolute;
+  left: 210px;
+
+  margin-top: 10px;
+
+  color:  #B3BBCB;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.task-list-body {
+  outline: none;  margin-top: 50px;
+  background-color: #F7F7F7;
+}
+
+.task-body {
+  color : black;
+  outline: none;
+}
+
+.task-body:not([disabled]):hover {
+  cursor: pointer;
+
+  color : black;
+  background-color: white;
+}
+
+.task-body:not([disabled]) {
+  color : black;
+  background-color: white;
+}
+
+/*END TASKS*/
+
+/* SIDENAV CUSTOM*/
+
+/*read task*/
+.task-text {
+  padding: 0px 50px;
+
+  color: white;
+
+  font-size: 12px;
+  line-height: 1.4em;
+}
+
+.edit-btn-task, .del-btn-task {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+
+  color: #51555E;
+}
+
+.edit-btn-task {
+  right: 35px;
+}
+/*end read task*/
+
+/*create task*/
+
+/*end create task*/
+
+/*END SIDENAV CUSTOM*/
